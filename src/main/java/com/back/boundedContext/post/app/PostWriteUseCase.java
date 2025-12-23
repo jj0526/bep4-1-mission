@@ -1,6 +1,5 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.domain.MemberScoreEvent;
 import com.back.boundedContext.post.domain.Post;

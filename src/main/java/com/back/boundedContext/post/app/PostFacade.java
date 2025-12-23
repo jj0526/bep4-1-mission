@@ -1,12 +1,9 @@
 package com.back.boundedContext.post.app;
 
 import com.back.boundedContext.member.domain.Member;
-import com.back.boundedContext.member.domain.MemberScoreEvent;
 import com.back.boundedContext.post.domain.Post;
-import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.boundedContext.post.out.PostRepository;
 import com.back.global.RsData.RsData;
-import com.back.global.eventPublisher.EventPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

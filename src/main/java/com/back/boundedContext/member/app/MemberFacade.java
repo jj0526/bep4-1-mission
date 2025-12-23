@@ -3,7 +3,6 @@ package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.domain.MemberPolicy;
-import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.global.RsData.RsData;
 import com.back.global.exception.DomainException;
 import com.back.boundedContext.member.out.MemberRepository;
