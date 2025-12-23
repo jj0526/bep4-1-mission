@@ -13,6 +13,7 @@ import java.util.List;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
+@Table(name = "POST_POST")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post extends BaseIdAndTime {
