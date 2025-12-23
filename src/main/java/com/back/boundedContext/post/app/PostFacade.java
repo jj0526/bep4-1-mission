@@ -5,6 +5,7 @@ import com.back.boundedContext.member.domain.MemberScoreEvent;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.boundedContext.post.out.PostRepository;
+import com.back.global.RsData.RsData;
 import com.back.global.eventPublisher.EventPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class PostFacade {
     }
 
     @Transactional
-    public void write(Member author, String title, String content) {
-        postWriteUseCase.write(author, title, content);
+    public RsData<Post> write(Member author, String title, String content) {
+        return postWriteUseCase.write(author, title, content);
     }
 
     public Optional<Post> findById(long id) {
