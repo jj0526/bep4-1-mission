@@ -3,6 +3,7 @@ package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.enums.ActivityType;
+import com.back.global.RsData.RsData;
 import com.back.global.exception.DomainException;
 import com.back.boundedContext.member.out.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class MemberFacade {
         return memberRepository.count();
     }
 
-    public Member join(String username, String password, String nickname) {
+    public RsData<Member> join(String username, String password, String nickname) {
         return memberJoinUseCase.join(username, password, nickname);
     }
 
