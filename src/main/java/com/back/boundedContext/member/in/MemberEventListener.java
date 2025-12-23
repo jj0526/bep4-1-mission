@@ -2,7 +2,7 @@ package com.back.boundedContext.member.in;
 
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.domain.MemberScoreEvent;
-import com.back.boundedContext.member.app.MemberService;
+import com.back.boundedContext.member.app.MemberFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,12 +14,12 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @RequiredArgsConstructor
 public class MemberEventListener {
 
-    private final MemberService memberService;
+    private final MemberFacade memberFacade;
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void handle(MemberScoreEvent memberScoreEvent){
-        Member member = memberService.findByMemberId(memberScoreEvent.memberId());
+        Member member = memberFacade.findByMemberId(memberScoreEvent.memberId());
         member.increaseScore(memberScoreEvent.activityType().getScore());
     }
 }
