@@ -1,7 +1,7 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.member.dto.Member;
-import com.back.boundedContext.member.dto.MemberScoreEvent;
+import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.member.domain.MemberScoreEvent;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.boundedContext.post.out.PostRepository;

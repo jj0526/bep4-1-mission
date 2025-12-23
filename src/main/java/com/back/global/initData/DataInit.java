@@ -1,6 +1,6 @@
 package com.back.global.initData;
 
-import com.back.boundedContext.member.dto.Member;
+import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.member.app.MemberService;
 import com.back.boundedContext.post.app.CommentService;

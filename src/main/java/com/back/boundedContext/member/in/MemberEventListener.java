@@ -1,7 +1,7 @@
 package com.back.boundedContext.member.in;
 
-import com.back.boundedContext.member.dto.Member;
-import com.back.boundedContext.member.dto.MemberScoreEvent;
+import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.member.domain.MemberScoreEvent;
 import com.back.boundedContext.member.app.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
