@@ -2,6 +2,7 @@ package com.back.service;
 
 import com.back.entity.Member;
 import com.back.entity.Post;
+import com.back.enums.ActivityType;
 import com.back.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final MemberService memberService;
 
     public long count() {
         return postRepository.count();
@@ -21,6 +23,7 @@ public class PostService {
     public Post write(Member author, String title, String content) {
         Post post = new Post(author, title, content);
 
+        memberService.increaseScore(author, ActivityType.POST);
         return postRepository.save(post);
     }
 

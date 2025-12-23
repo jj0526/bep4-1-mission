@@ -2,6 +2,7 @@ package com.back.service;
 
 
 import com.back.entity.Member;
+import com.back.enums.ActivityType;
 import com.back.exception.DomainException;
 import com.back.repository.MemberRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public class MemberService {
 
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
+    }
+
+    public void increaseScore(Member member, ActivityType activityType){
+        member.increaseScore(activityType.getScore());
     }
 }

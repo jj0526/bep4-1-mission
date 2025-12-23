@@ -1,5 +1,6 @@
 package com.back.entity;
 
+import com.back.enums.ActivityType;
 import com.back.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -33,8 +34,9 @@ public class Post extends BaseIdAndTime {
 
     public PostComment addComment(Member author, String content) {
         PostComment postComment = new PostComment(this, author, content);
-
         comments.add(postComment);
+
+        author.increaseScore(ActivityType.COMMENT.getScore());
 
         return postComment;
     }
