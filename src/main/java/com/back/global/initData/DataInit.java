@@ -3,6 +3,7 @@ package com.back.global.initData;
 import com.back.boundedContext.member.entity.Member;
 import com.back.boundedContext.post.entity.Post;
 import com.back.boundedContext.member.service.MemberService;
+import com.back.boundedContext.post.service.CommentService;
 import com.back.boundedContext.post.service.PostService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -17,15 +18,17 @@ public class DataInit {
     private final DataInit self;
     private final MemberService memberService;
     private final PostService postService;
+    private final CommentService commentService;
 
     public DataInit(
             @Lazy DataInit self,
             MemberService memberService,
-            PostService postService
+            PostService postService, CommentService commentService
     ) {
         this.self = self;
         this.memberService = memberService;
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @Bean
@@ -57,12 +60,12 @@ public class DataInit {
         Member user2Member = memberService.findByUsername("user2").get();
         Member user3Member = memberService.findByUsername("user3").get();
 
-        Post post1 = postService.write(user1Member, "제목1", "내용1");
-        Post post2 = postService.write(user1Member, "제목2", "내용2");
-        Post post3 = postService.write(user1Member, "제목3", "내용3");
-        Post post4 = postService.write(user2Member, "제목4", "내용4");
-        Post post5 = postService.write(user2Member, "제목5", "내용5");
-        Post post6 = postService.write(user3Member, "제목6", "내용6");
+        postService.write(user1Member, "제목1", "내용1");
+        postService.write(user1Member, "제목2", "내용2");
+        postService.write(user1Member, "제목3", "내용3");
+        postService.write(user2Member, "제목4", "내용4");
+        postService.write(user2Member, "제목5", "내용5");
+        postService.write(user3Member, "제목6", "내용6");
     }
 
     @Transactional
@@ -80,16 +83,16 @@ public class DataInit {
 
         if (post1.hasComments()) return;
 
-        post1.addComment(user1Member, "댓글1");
-        post1.addComment(user2Member, "댓글2");
-        post1.addComment(user3Member, "댓글3");
+        commentService.addComment(post1, user1Member, "댓글1");
+        commentService.addComment(post1, user2Member, "댓글2");
+        commentService.addComment(post1, user3Member, "댓글3");
 
-        post2.addComment(user2Member, "댓글4");
-        post2.addComment(user2Member, "댓글5");
+        commentService.addComment(post2, user2Member, "댓글4");
+        commentService.addComment(post2, user2Member, "댓글5");
 
-        post3.addComment(user3Member, "댓글6");
-        post3.addComment(user3Member, "댓글7");
+        commentService.addComment(post3, user3Member, "댓글6");
+        commentService.addComment(post3, user3Member, "댓글7");
 
-        post4.addComment(user1Member, "댓글8");
+        commentService.addComment(post4, user1Member, "댓글8");
     }
 }

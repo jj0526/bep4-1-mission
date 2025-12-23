@@ -1,10 +1,10 @@
 package com.back.boundedContext.post.entity;
 
 import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.entity.enums.ActivityType;
 import com.back.global.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import java.util.List;
 
 import static jakarta.persistence.FetchType.LAZY;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post extends BaseIdAndTime {
@@ -33,13 +34,9 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
-    public PostComment addComment(Member author, String content) {
+    public void addComment(Member author, String content) {
         PostComment postComment = new PostComment(this, author, content);
         comments.add(postComment);
-
-        author.increaseScore(ActivityType.COMMENT.getScore());
-
-        return postComment;
     }
 
     public boolean hasComments() {

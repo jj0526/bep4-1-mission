@@ -36,4 +36,9 @@ public class MemberService {
     public void increaseScore(Member member, ActivityType activityType){
         member.increaseScore(activityType.getScore());
     }
+
+    public Member findByMemberId(long memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new DomainException("MEMBER_NOT_FOUND", "회원이 존재하지 않습니다."));
+    }
 }
