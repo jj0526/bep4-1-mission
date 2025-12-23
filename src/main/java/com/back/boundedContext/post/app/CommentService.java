@@ -1,9 +1,9 @@
-package com.back.boundedContext.post.service;
+package com.back.boundedContext.post.app;
 
 import com.back.boundedContext.member.dto.MemberScoreEvent;
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.entity.Post;
-import com.back.boundedContext.post.entity.enums.ActivityType;
+import com.back.boundedContext.member.dto.Member;
+import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.global.eventPublisher.EventPublisher;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

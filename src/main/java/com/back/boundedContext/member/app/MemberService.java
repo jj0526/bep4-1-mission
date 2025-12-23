@@ -1,10 +1,10 @@
-package com.back.boundedContext.member.service;
+package com.back.boundedContext.member.app;
 
 
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.entity.enums.ActivityType;
+import com.back.boundedContext.member.dto.Member;
+import com.back.boundedContext.post.domain.enums.ActivityType;
 import com.back.global.exception.DomainException;
-import com.back.boundedContext.member.repository.MemberRepository;
+import com.back.boundedContext.member.out.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.back.boundedContext.post.entity.enums;
+package com.back.boundedContext.post.domain.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
-package com.back.boundedContext.member.eventListener;
+package com.back.boundedContext.member.in;
 
-import com.back.boundedContext.member.entity.Member;
+import com.back.boundedContext.member.dto.Member;
 import com.back.boundedContext.member.dto.MemberScoreEvent;
-import com.back.boundedContext.member.service.MemberService;
+import com.back.boundedContext.member.app.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
