@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 public class PostMember extends ReplicaMember {
-    public PostMember(String username, String password, String nickname) {
-        super(username, password, nickname);
+    public PostMember(String username, String password, String nickname, int score) {
+        super(username, password, nickname, score);
     }
 
     private PostMember(
@@ -23,10 +23,11 @@ public class PostMember extends ReplicaMember {
             String username,
             String nickname,
             String password,
+            int score,
             LocalDateTime createDate,
             LocalDateTime modifyDate
     ) {
-        super(id, username, nickname, password, createDate, modifyDate);
+        super(id, username, nickname, password, createDate, modifyDate, score);
     }
 
     public static PostMember sync(MemberDto dto) {
@@ -35,6 +36,7 @@ public class PostMember extends ReplicaMember {
                 dto.username(),
                 dto.nickname(),
                 "",
+                dto.score(),
                 dto.createDate(),
                 dto.modifyDate()
         );

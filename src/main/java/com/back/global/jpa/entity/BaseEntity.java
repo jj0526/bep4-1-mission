@@ -1,5 +1,6 @@
 package com.back.global.jpa.entity;
 
+import com.back.global.config.GlobalConfig;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -13,6 +14,10 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
     public String getModelTypeCode() {
         return this.getClass().getSimpleName();
+    }
+
+    protected void publishEvent(Object event) {
+        GlobalConfig.getEventPublisher().publish(event);
     }
 
     public abstract long getId();

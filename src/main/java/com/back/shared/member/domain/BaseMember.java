@@ -16,13 +16,15 @@ public abstract class BaseMember extends BaseEntity {
     private String nickname;
     private int score = 0;
 
-    public BaseMember(String username, String password, String nickname) {
+    public BaseMember(String username, String password, String nickname, int score) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+        this.score = score;
     }
 
-    public void increaseScore(int plus){
+    protected void increaseScoreInternal(int plus) {
         this.score += plus;
     }
+
 }

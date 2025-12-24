@@ -10,6 +10,7 @@ public record MemberDto(
         long memberId,
         String username,
         String nickname,
+        int score,
         LocalDateTime createDate,
         LocalDateTime modifyDate
 ) {
@@ -18,6 +19,7 @@ public record MemberDto(
                 member.getId(),
                 member.getUsername(),
                 member.getNickname(),
+                member.getScore(),
                 member.getCreateDate(),
                 member.getModifyDate()
         );
