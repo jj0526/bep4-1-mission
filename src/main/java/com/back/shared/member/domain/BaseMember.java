@@ -14,7 +14,7 @@ public abstract class BaseMember extends BaseEntity {
     private String username;
     private String password;
     private String nickname;
-    private int score;
+    private int score = 0;
 
     public BaseMember(String username, String password, String nickname) {
         this.username = username;
