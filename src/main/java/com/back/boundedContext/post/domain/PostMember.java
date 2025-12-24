@@ -22,10 +22,11 @@ public class PostMember extends ReplicaMember {
             long id,
             String username,
             String nickname,
+            String password,
             LocalDateTime createDate,
             LocalDateTime modifyDate
     ) {
-        super(id, username, nickname, createDate, modifyDate);
+        super(id, username, nickname, password, createDate, modifyDate);
     }
 
     public static PostMember sync(MemberDto dto) {
@@ -33,6 +34,7 @@ public class PostMember extends ReplicaMember {
                 dto.memberId(),
                 dto.username(),
                 dto.nickname(),
+                "",
                 dto.createDate(),
                 dto.modifyDate()
         );
