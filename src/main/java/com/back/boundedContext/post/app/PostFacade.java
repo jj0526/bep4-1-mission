@@ -6,6 +6,7 @@ import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.boundedContext.post.out.PostRepository;
 import com.back.global.RsData.RsData;
+import com.back.global.exception.DomainException;
 import com.back.shared.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,13 +26,20 @@ public class PostFacade {
     }
 
     @Transactional
-    public RsData<Post> write(Member author, String title, String content) {
+    public RsData<Post> write(PostMember author, String title, String content) {
         return postWriteUseCase.write(author, title, content);
     }
 
-    public PostMember syncMember(MemberDto memberDto){
+    @Transactional
+    public PostMember syncMember(MemberDto memberDto) {
         PostMember postMember = PostMember.sync(memberDto);
         return postMemberRepository.save(postMember);
+    }
+
+    @Transactional(readOnly = true)
+    public PostMember findPostMemberByUsername(String username) {
+        return postMemberRepository.findByUsername(username)
+                .orElseThrow(() -> new DomainException("400", "존재하지 않는 게시물 회원입니다."));
     }
 
     public Optional<Post> findById(long id) {

@@ -17,7 +17,7 @@ public class PostComment extends BaseIdAndTime {
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member author;
+    private PostMember author;
 
     @Column(columnDefinition = "TEXT")
     private String content;

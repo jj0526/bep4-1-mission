@@ -1,6 +1,7 @@
 package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
+import com.back.shared.member.MemberJoinedEvent.MemberJoinedEvent;
 import com.back.shared.member.dto.MemberDto;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.RsData.RsData;
@@ -23,7 +24,7 @@ public class MemberJoinUseCase {
 
         Member member = memberRepository.save(new Member(username, password, nickname));
 
-        eventPublisher.publish(MemberDto.from(member));
+        eventPublisher.publish(new MemberJoinedEvent(MemberDto.from(member)));
 
         return new RsData<>("201-1", "%d번 회원이 생성되었습니다."
                 .formatted(member.getId()), member);
