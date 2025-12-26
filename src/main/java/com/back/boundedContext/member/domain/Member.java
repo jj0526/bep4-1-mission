@@ -5,18 +5,26 @@ import com.back.shared.member.domain.SourceMember;
 import com.back.shared.member.dto.MemberDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "MEMBER_MEMBER")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@SuperBuilder
 public class Member extends SourceMember {
 
-    public Member(String username, String password, String nickname) {
-        super(username, password, nickname);
+    public static Member from(String username, String password, String nickname) {
+        return Member.builder()
+                .username(username)
+                .password(password)
+                .nickname(nickname)
+                .build();
     }
+
     public void increaseScore(int plus){
         increaseScoreInternal(plus);
 

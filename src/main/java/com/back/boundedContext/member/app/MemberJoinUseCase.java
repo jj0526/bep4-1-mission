@@ -22,7 +22,7 @@ public class MemberJoinUseCase {
             throw new DomainException("409-1", "이미 존재하는 username 입니다.");
         });
 
-        Member member = memberRepository.save(new Member(username, password, nickname));
+        Member member = memberRepository.save(Member.from(username, password, nickname));
 
         eventPublisher.publish(new MemberJoinedEvent(MemberDto.from(member)));
 

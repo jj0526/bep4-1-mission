@@ -1,6 +1,5 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
@@ -32,7 +31,7 @@ public class PostFacade {
 
     @Transactional
     public PostMember syncMember(MemberDto memberDto) {
-        PostMember postMember = PostMember.sync(memberDto);
+        PostMember postMember = PostMember.from(memberDto);
         return postMemberRepository.save(postMember);
     }
 

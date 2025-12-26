@@ -4,41 +4,29 @@ import com.back.shared.member.domain.ReplicaMember;
 import com.back.shared.member.dto.MemberDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "POST_MEMBER")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SuperBuilder
 @Getter
 public class PostMember extends ReplicaMember {
-    public PostMember(String username, String password, String nickname, int score) {
-        super(username, password, nickname, score);
-    }
 
-    private PostMember(
-            long id,
-            String username,
-            String nickname,
-            String password,
-            int score,
-            LocalDateTime createDate,
-            LocalDateTime modifyDate
-    ) {
-        super(id, username, nickname, password, createDate, modifyDate, score);
-    }
-
-    public static PostMember sync(MemberDto dto) {
-        return new PostMember(
-                dto.memberId(),
-                dto.username(),
-                dto.nickname(),
-                "",
-                dto.score(),
-                dto.createDate(),
-                dto.modifyDate()
-        );
+    public static PostMember from(MemberDto dto) {
+        return PostMember.builder()
+                .id(dto.memberId())
+                .username(dto.username())
+                .nickname(dto.nickname())
+                .password("")
+                .score(dto.score())
+                .createDate(dto.createDate())
+                .modifyDate(dto.modifyDate())
+                .build();
     }
 }
