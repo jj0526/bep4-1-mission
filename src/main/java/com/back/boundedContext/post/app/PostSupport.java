@@ -8,6 +8,7 @@ import com.back.global.exception.DomainException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -27,5 +28,13 @@ public class PostSupport {
     public PostMember findMemberByUsername(String username) {
         return postMemberRepository.findByUsername(username)
                 .orElseThrow(() -> new DomainException("400", "존재하지 않는 게시물 회원입니다."));
+    }
+
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
+
+    public List<Post> findByOrderByIdDesc() {
+        return postRepository.findByOrderByIdDesc();
     }
 }
