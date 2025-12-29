@@ -28,12 +28,12 @@ public class Product extends BaseIdAndTime {
 
     private String description;
 
-    private int price;
+    private long price;
 
-    private int salePrice;
+    private long salePrice;
 
     public static Product from(MarketMember seller, String sourceTypeCode, long sourceId,
-                               String name, String description, int price, int salePrice) {
+                               String name, String description, long price, long salePrice) {
         return Product.builder()
                 .seller(seller)
                 .sourceTypeCode(sourceTypeCode)

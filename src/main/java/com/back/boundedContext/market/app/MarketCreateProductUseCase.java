@@ -17,8 +17,8 @@ public class MarketCreateProductUseCase {
             long sourceId,
             String name,
             String description,
-            int price,
-            int salePrice
+            long price,
+            long salePrice
     ) {
         Product product = Product.from(seller, sourceTypeCode, sourceId,
                 name, description, price, salePrice);
