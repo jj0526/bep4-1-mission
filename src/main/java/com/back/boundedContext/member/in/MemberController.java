@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/member/api/v1/members")
+@RequestMapping("/api/v1/member/members")
 @RequiredArgsConstructor
 public class MemberController {
 

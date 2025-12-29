@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post/api/v1/posts")
+@RequestMapping("/api/v1/post/posts")
 @RequiredArgsConstructor
 public class ApiV1PostController {
     private final PostFacade postFacade;
