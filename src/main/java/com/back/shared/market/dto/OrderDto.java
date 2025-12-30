@@ -1,6 +1,7 @@
 package com.back.shared.market.dto;
 
 import com.back.boundedContext.market.domain.Order;
+import com.back.standard.modelType.CanGetModelTypeCode;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -16,18 +17,9 @@ public record OrderDto(
         long salePrice,
         LocalDateTime requestPaymentDate,
         LocalDateTime paymentDate
-) {
-    public OrderDto(Order order){
-        this(
-                order.getId(),
-                order.getCreateDate(),
-                order.getModifyDate(),
-                order.getCustomer().getId(),
-                order.getCustomer().getNickname(),
-                order.getPrice(),
-                order.getSalePrice(),
-                order.getRequestPaymentDate(),
-                order.getPaymentDate()
-        );
+) implements CanGetModelTypeCode {
+    @Override
+    public String getModelTypeCode() {
+        return "Order";
     }
 }
