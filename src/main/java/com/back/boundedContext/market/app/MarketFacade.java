@@ -88,7 +88,7 @@ public class MarketFacade {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Order> findOrderById(int id) {
+    public Optional<Order> findOrderById(long id) {
         return marketSupport.findOrderById(id);
     }
 
