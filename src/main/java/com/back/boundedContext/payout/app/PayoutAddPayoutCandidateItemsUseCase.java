@@ -28,9 +28,9 @@ public class PayoutAddPayoutCandidateItemsUseCase {
     }
 
     private void makePayoutCandidateItems(OrderDto orderDto, OrderItemDto orderItemDto) {
-        PayoutMember holding = payoutSupport.findHolingMember()
+        PayoutMember system = payoutSupport.findSystemMember()
                 .orElseThrow(() -> new DomainException("PAYOUT_HOLDING_MEMBER_NOT_FOUND",
-                        "정산 홀딩 회원을 찾을 수 없습니다"));
+                        "정산 시스템 회원을 찾을 수 없습니다"));
 
         PayoutMember buyer = payoutSupport.findMemberById(orderDto.customerId())
                 .orElseThrow(() -> new DomainException("PAYOUT_MEMBER_NOT_FOUND", "정산 회원을 찾을 수 없습니다"));
@@ -44,7 +44,7 @@ public class PayoutAddPayoutCandidateItemsUseCase {
                 orderItemDto.id(),
                 orderDto.paymentDate(),
                 buyer,
-                holding,
+                system,
                 orderItemDto.payoutFee()
         );
 

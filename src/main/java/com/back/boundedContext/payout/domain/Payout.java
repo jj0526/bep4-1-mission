@@ -20,8 +20,10 @@ import java.util.List;
 public class Payout extends BaseIdAndTime {
     @ManyToOne(fetch = FetchType.LAZY)
     private PayoutMember payee;
+
     @Setter
     private LocalDateTime payoutDate;
+
     private long amount = 0;
 
     @OneToMany(mappedBy = "payout", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
@@ -33,7 +35,8 @@ public class Payout extends BaseIdAndTime {
                 .build();
     }
 
-    public PayoutItem addItem(PayoutEventType eventType, String relTypeCode, int relId, LocalDateTime payDate, PayoutMember payer, PayoutMember payee, long amount) {
+    public PayoutItem addItem(PayoutEventType eventType, String relTypeCode, long relId,
+                              LocalDateTime payDate, PayoutMember payer, PayoutMember payee, long amount) {
         PayoutItem payoutItem = PayoutItem.builder()
                 .payout(this)
                 .eventType(eventType)

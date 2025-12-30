@@ -21,7 +21,7 @@ public class PayoutItem extends BaseIdAndTime {
 
     String relTypeCode;
 
-    private int relId;
+    private long relId;
 
     private LocalDateTime paymentDate;
 

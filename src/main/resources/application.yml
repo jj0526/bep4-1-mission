@@ -32,6 +32,8 @@ logging:
 custom:
   global:
     internalBackUrl: http://localhost:${server.port:8080}
+  payout:
+    readyWaitingDays: 14
   member:
     password:
       changeDays: 90
