@@ -1,9 +1,11 @@
 package com.back.shared.market.dto;
 
 import com.back.boundedContext.market.domain.Order;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record OrderDto(
         long id,
         LocalDateTime createDate,

@@ -1,9 +1,11 @@
 package com.back.shared.cash.dto;
 
 import com.back.boundedContext.cash.domain.Wallet;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record WalletDto(
         long id,
         LocalDateTime createDate,

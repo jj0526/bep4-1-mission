@@ -44,6 +44,20 @@ public class Order extends BaseIdAndTime {
         );
     }
 
+    public OrderDto toDto() {
+        return OrderDto.builder()
+                .id(getId())
+                .createDate(getCreateDate())
+                .modifyDate(getModifyDate())
+                .customerId(customer.getId())
+                .customerName(customer.getNickname())
+                .price(price)
+                .salePrice(salePrice)
+                .requestPaymentDate(requestPaymentDate)
+                .paymentDate(paymentDate)
+                .build();
+    }
+
     public void addItem(Product product) {
         OrderItem orderItem = OrderItem.from(
                 this, product);
@@ -66,10 +80,8 @@ public class Order extends BaseIdAndTime {
         requestPaymentDate = LocalDateTime.now();
 
         publishEvent(
-                MarketOrderPaymentRequestedEvent.builder()
-                        .orderDto(new OrderDto(this))
-                        .pgPaymentAmount(pgPaymentAmount)
-                        .build()
+                new MarketOrderPaymentRequestedEvent(
+                        toDto(), pgPaymentAmount)
         );
     }
 

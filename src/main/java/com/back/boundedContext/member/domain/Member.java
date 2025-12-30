@@ -30,4 +30,15 @@ public class Member extends SourceMember {
 
         publishEvent(new MemberModifiedEvent(MemberDto.from(this)));
     }
+
+    public MemberDto toDto() {
+        return MemberDto.builder()
+                .memberId(getId())
+                .username(getUsername())
+                .nickname(getNickname())
+                .score(getScore())
+                .createDate(getCreateDate())
+                .modifyDate(getModifyDate())
+                .build();
+    }
 }

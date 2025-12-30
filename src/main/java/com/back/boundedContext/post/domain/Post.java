@@ -35,9 +35,10 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
-    public void addComment(PostMember author, String content) {
+    public PostComment addComment(PostMember author, String content) {
         PostComment postComment = new PostComment(this, author, content);
         comments.add(postComment);
+        return postComment;
     }
 
     public boolean hasComments() {

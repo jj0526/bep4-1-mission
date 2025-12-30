@@ -1,9 +1,11 @@
 package com.back.shared.market.dto;
 
 import com.back.boundedContext.market.domain.MarketMember;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record MarketMemberDto(
         long id,
         LocalDateTime createDate,
@@ -12,14 +14,4 @@ public record MarketMemberDto(
         String nickname,
         int activityScore
 ) {
-    public MarketMemberDto(MarketMember marketMember) {
-        this(
-                marketMember.getId(),
-                marketMember.getCreateDate(),
-                marketMember.getModifyDate(),
-                marketMember.getUsername(),
-                marketMember.getNickname(),
-                marketMember.getScore()
-        );
-    }
 }
