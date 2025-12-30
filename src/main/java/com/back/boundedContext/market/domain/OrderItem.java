@@ -30,7 +30,7 @@ public class OrderItem extends BaseIdAndTime {
 
     private long salePrice;
 
-    private double payoutRate = MarketPolicy.PRODUCT_PAYOUT_RATE;
+    private double payoutRate;
 
 
     public static OrderItem from(Order order, Product product) {
@@ -40,6 +40,7 @@ public class OrderItem extends BaseIdAndTime {
                 .productName(product.getName())
                 .price(product.getPrice())
                 .salePrice(product.getSalePrice())
+                .payoutRate(MarketPolicy.PRODUCT_PAYOUT_RATE)
                 .build();
     }
 
