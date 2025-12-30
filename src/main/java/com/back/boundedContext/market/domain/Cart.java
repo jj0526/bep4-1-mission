@@ -2,6 +2,7 @@ package com.back.boundedContext.market.domain;
 
 import com.back.global.jpa.entity.BaseManualIdAndTime;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "MARKET_CART")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @SuperBuilder
 public class Cart extends BaseManualIdAndTime {
