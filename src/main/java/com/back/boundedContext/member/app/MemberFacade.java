@@ -1,6 +1,5 @@
 package com.back.boundedContext.member.app;
 
-
 import com.back.boundedContext.member.domain.Member;
 import com.back.global.RsData.RsData;
 import lombok.RequiredArgsConstructor;

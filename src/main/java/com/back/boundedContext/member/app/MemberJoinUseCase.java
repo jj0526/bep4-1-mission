@@ -2,7 +2,6 @@ package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
 import com.back.shared.member.MemberJoinedEvent.MemberJoinedEvent;
-import com.back.shared.member.dto.MemberDto;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.RsData.RsData;
 import com.back.global.eventPublisher.EventPublisher;

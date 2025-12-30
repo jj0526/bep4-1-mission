@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "POST_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

@@ -1,7 +1,6 @@
 package com.back.shared.market.out;
 
 import com.back.global.exception.DomainException;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

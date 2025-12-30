@@ -1,6 +1,5 @@
 package com.back.global.exception;
 
-
 import lombok.Getter;
 
 @Getter
