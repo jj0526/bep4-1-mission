@@ -1,6 +1,5 @@
 package com.back.boundedContext.payout.app;
 
-
 import com.back.boundedContext.market.domain.PayoutPolicy;
 import com.back.boundedContext.payout.domain.Payout;
 import com.back.boundedContext.payout.domain.PayoutItem;
@@ -49,12 +48,15 @@ public class PayoutCollectPayoutItemsMoreUseCase {
                     });
                 });
 
-
         return new RsData<>(
                 "201-1",
                 "%d건의 정산데이터가 생성되었습니다.".formatted(payoutReadyCandidateItems.size()),
                 payoutReadyCandidateItems.size()
         );
+    }
+
+    private Optional<Payout> findActiveByPayee(PayoutMember payee) {
+        return payoutRepository.findByPayeeAndPayoutDateIsNull(payee);
     }
 
     private List<PayoutCandidateItem> findPayoutReadyCandidateItems(int limit) {
@@ -68,9 +70,5 @@ public class PayoutCollectPayoutItemsMoreUseCase {
                 daysAgo,
                 PageRequest.of(0, limit)
         );
-    }
-
-    private Optional<Payout> findActiveByPayee(PayoutMember payee) {
-        return payoutRepository.findByPayeeAndPayoutDateIsNull(payee);
     }
 }
