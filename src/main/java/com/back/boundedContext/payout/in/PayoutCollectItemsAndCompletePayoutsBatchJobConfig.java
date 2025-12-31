@@ -23,12 +23,12 @@ public class PayoutCollectItemsAndCompletePayoutsBatchJobConfig {
     }
 
     @Bean
-    public Job PayoutCollectItemsAndCompletePayoutsBatchJobConfig (
+    public Job payoutCollectItemsAndCompletePayoutsJob (
             JobRepository jobRepository,
             Step payoutCollectItemsStep,
             Step payoutCompletePayouts
     ) {
-        return new JobBuilder("PayoutCollectItemsAndCompletePayoutsBatchJobConfig ", jobRepository)
+        return new JobBuilder("payoutCollectItemsAndCompletePayoutsJob", jobRepository)
                 .start(payoutCollectItemsStep)
                 .next(payoutCompletePayouts)
                 .build();
