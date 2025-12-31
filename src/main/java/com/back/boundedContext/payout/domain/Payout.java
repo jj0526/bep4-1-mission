@@ -1,6 +1,8 @@
 package com.back.boundedContext.payout.domain;
 
 import com.back.global.jpa.entity.BaseIdAndTime;
+import com.back.shared.market.dto.PayoutDto;
+import com.back.shared.payout.event.PayoutCompletedEvent;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -54,4 +56,31 @@ public class Payout extends BaseIdAndTime {
 
         return payoutItem;
     }
+
+    public void completePayout() {
+        this.payoutDate = LocalDateTime.now();
+
+        publishEvent(
+                new PayoutCompletedEvent(
+                        toDto()
+                )
+        );
+    }
+
+    public PayoutDto toDto() {
+        return PayoutDto.builder()
+                .id(getId())
+                .createDate(getCreateDate())
+                .modifyDate(getModifyDate())
+                .payeeId(payee.getId())
+                .payeeNickname(payee.getNickname())
+                .payoutDate(payoutDate)
+                .amount(amount)
+                .isPayeeSystem(payee.isSystem())
+                .build();
+    }
+
+
+
+
 }

@@ -1,7 +1,7 @@
 package com.back.global.jpa.entity;
 
 import com.back.global.config.GlobalConfig;
-import com.back.standard.modelType.CanGetModelTypeCode;
+import com.back.standard.modelType.HasModelTypeCode;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public abstract class BaseEntity implements CanGetModelTypeCode {
+public abstract class BaseEntity implements HasModelTypeCode {
     public abstract long getId();
     public abstract LocalDateTime getCreateDate();
     public abstract LocalDateTime getModifyDate();

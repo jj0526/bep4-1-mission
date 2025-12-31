@@ -1,7 +1,7 @@
 package com.back.shared.post.dto;
 
 import com.back.boundedContext.post.domain.Post;
-import com.back.standard.modelType.CanGetModelTypeCode;
+import com.back.standard.modelType.HasModelTypeCode;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +13,7 @@ public record PostDto(
         String authorName,
         String title,
         String content
-) implements CanGetModelTypeCode {
+) implements HasModelTypeCode {
     @Override
     public String getModelTypeCode() {
         return "Post";

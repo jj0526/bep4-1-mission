@@ -1,6 +1,5 @@
 package com.back.boundedContext.payout.app;
 
-
 import com.back.boundedContext.payout.domain.Payout;
 import com.back.global.RsData.RsData;
 import com.back.shared.market.dto.OrderDto;
@@ -18,6 +17,7 @@ public class PayoutFacade {
     private final PayoutSyncMemberUseCase payoutSyncMemberUseCase;
     private final PayoutCreatePayoutUseCase payoutCreatePayoutUseCase;
     private final PayoutAddPayoutCandidateItemsUseCase payoutAddPayoutCandidateItemsUseCase;
+    private final PayoutCompletePayoutsMoreUseCase payoutCompletePayoutsMoreUseCase;
 
     private final PayoutCollectPayoutItemsMoreUseCase payoutCollectPayoutItemsMoreUseCase;
     private final PayoutSupport payoutSupport;
@@ -28,8 +28,8 @@ public class PayoutFacade {
     }
 
     @Transactional
-    public Payout createPayout(PayoutMemberDto payee) {
-        return payoutCreatePayoutUseCase.createPayout(payee);
+    public Payout createPayout(long payeeId) {
+        return payoutCreatePayoutUseCase.createPayout(payeeId);
     }
 
     @Transactional
@@ -46,5 +46,10 @@ public class PayoutFacade {
     public List<PayoutCandidateItem> findPayoutCandidateItems() {
         return payoutSupport
                 .findPayoutCandidateItems();
+    }
+
+    @Transactional
+    public RsData<Integer> completePayoutsMore(int limit) {
+        return payoutCompletePayoutsMoreUseCase.completePayoutsMore(limit);
     }
 }

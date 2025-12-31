@@ -1,6 +1,6 @@
 package com.back.shared.market.dto;
 
-import com.back.standard.modelType.CanGetModelTypeCode;
+import com.back.standard.modelType.HasModelTypeCode;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -22,7 +22,7 @@ public record OrderItemDto(
         double payoutRate,
         long payoutFee,
         long salePriceWithoutFee
-) implements CanGetModelTypeCode {
+) implements HasModelTypeCode {
     @Override
     public String getModelTypeCode() {
         return "OrderItem";
